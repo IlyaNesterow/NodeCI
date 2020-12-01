@@ -7,7 +7,7 @@ node_js:
 dist: trusty
 #Databases
 services:
-  - redis-server
+  - redis
   - mongodb
 #Nodejs environment (CI)
 env: 
