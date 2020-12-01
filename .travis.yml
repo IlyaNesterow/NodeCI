@@ -1,0 +1,26 @@
+#comment in yaml
+#nodejs stuff
+language: node_js
+node_js: 
+  - "14.8.0"
+#OS stuff, trusty is the special version of linux for some small tasks
+dist: trusty
+#Databases
+services:
+  - redis-server
+  - mongodb
+#Nodejs environment (CI)
+env: 
+  - NODE_ENV=ci PORT=3000
+#supposed for node_modules memoization
+cache: 
+  directories: 
+    - node_modules
+    - client/node_modules  
+install: 
+  - npm install
+  - npm run build
+script: 
+  - nohup npm run start & 
+  - sleep 3
+  - npm run test
